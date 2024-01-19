@@ -24,7 +24,7 @@ const comparisons = [
 ];
 ---
 
-<section class="w-full py-12 md:py-24 lg:py-32">
+<section class="w-full py-8 lg:py-20">
   <Container>
     <Header title={title} />
     <div class="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:grid-cols-2 mt-8">
@@ -36,7 +36,9 @@ const comparisons = [
               class="mx-auto aspect-[1/1] overflow-hidden rounded-xl object-cover object-center sm:w-full"
               src={image}
             />
-            <p class="mt-4 text-center text-neutral-700">{title}</p>
+            <p class="mt-4 text-center text-lg lg:text-2xl text-neutral-600">
+              {title}
+            </p>
           </div>
         ))
       }
