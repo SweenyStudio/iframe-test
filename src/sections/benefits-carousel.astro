@@ -1,0 +1,65 @@
+---
+import type {ImageMetadata} from "astro";
+import Header from "../components/header.astro";
+import Container from "../components/container.astro";
+import Benefit from "../components/benefit.astro";
+
+const {benefits} = Astro.props;
+---
+
+<section class="relative py-8 lg:py-20">
+  <Container>
+    <Header title="The Next Generation Of Golfing" />
+  </Container>
+  <div
+    class="scrollbar-hide scroll-container-benefits pl-4 sm:pl-6 md:pl-12 lg:pl-32 flex flex-nowrap flex-shrink-0 overflow-x-scroll relative snap-mandatory snap-x"
+  >
+    <div class="flex flex-row py-8 gap-x-6">
+      {
+        benefits.map(
+          (review: {
+            title: string;
+            description: string;
+            image: ImageMetadata;
+          }) => <Benefit {...review} />
+        )
+      }
+    </div>
+  </div>
+  <Container>
+    <div class="progress-bar bg-neutral-300 h-1.5 w-full rounded-full">
+      <div
+        class="progress-benefits bg-gradient-to-r from-lime-300 to-lime-600 h-1.5 w-0 rounded-full"
+      >
+      </div>
+    </div>
+  </Container>
+</section>
+
+<script>
+  const scrollContainer = document.querySelector(
+    ".scroll-container-benefits"
+  ) as HTMLElement;
+  const progressBar = document.querySelector(
+    ".progress-benefits"
+  ) as HTMLElement;
+
+  function updateProgressBar() {
+    if (!scrollContainer) {
+      console.error("Scroll container not found");
+      return;
+    }
+
+    const scrollWidth =
+      scrollContainer.scrollWidth - scrollContainer.clientWidth;
+    const scrollLeft = scrollContainer.scrollLeft;
+    const scrollPercent = (scrollLeft / scrollWidth) * 100;
+    progressBar.style.width = scrollPercent + "%";
+  }
+
+  if (scrollContainer) {
+    scrollContainer.addEventListener("scroll", updateProgressBar);
+  } else {
+    console.error("Scroll container not found");
+  }
+</script>

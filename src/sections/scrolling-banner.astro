@@ -1,0 +1,36 @@
+---
+interface Props {
+  messages: string[];
+}
+
+const {messages} = Astro.props;
+---
+
+<section class="relative overflow-x-clip bg-neutral-900">
+  <div
+    class="relative flex gap-10 overflow-hidden py-2 group font-medium text-neutral-300"
+  >
+    <div
+      class="motion-safe:animate-marquee w-auto overflow-x-auto flex flex-nowrap min-w-full shrink-0 items-stretch gap-10 snap-x snap-mandatory px-5"
+    >
+      {
+        messages.map((item) => (
+          <div class="flex-shrink-0 mx-6">
+            <p>{item}</p>
+          </div>
+        ))
+      }
+    </div>
+    <div
+      class="motion-safe:animate-marquee motion-reduce:hidden flex min-w-full shrink-0 items-center gap-10"
+    >
+      {
+        messages.map((item) => (
+          <div class="flex-shrink-0 mx-6">
+            <p>{item}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

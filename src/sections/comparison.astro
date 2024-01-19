@@ -1,0 +1,45 @@
+---
+import type {ImageMetadata} from "astro";
+import {Image} from "astro:assets";
+import Container from "../components/container.astro";
+import Header from "../components/header.astro";
+
+interface Props {
+  imageBefore: ImageMetadata;
+  imageAfter: ImageMetadata;
+  title: string;
+}
+
+const {imageBefore, imageAfter, title} = Astro.props;
+
+const comparisons = [
+  {
+    image: imageBefore,
+    title: "Before",
+  },
+  {
+    image: imageAfter,
+    title: "After",
+  },
+];
+---
+
+<section class="w-full py-12 md:py-24 lg:py-32">
+  <Container>
+    <Header title={title} />
+    <div class="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:grid-cols-2 mt-8">
+      {
+        comparisons.map(({image, title}) => (
+          <div class="flex flex-col items-center">
+            <Image
+              alt={title}
+              class="mx-auto aspect-[1/1] overflow-hidden rounded-xl object-cover object-center sm:w-full"
+              src={image}
+            />
+            <p class="mt-4 text-center text-neutral-700">{title}</p>
+          </div>
+        ))
+      }
+    </div>
+  </Container>
+</section>

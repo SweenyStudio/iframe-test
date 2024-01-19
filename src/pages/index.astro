@@ -1,16 +1,177 @@
 ---
+import Product from "../sections/product.astro";
+import Navbar from "../sections/navbar";
+import VideoSection from "../sections/video.astro";
+import ScrollingBanner from "../sections/scrolling-banner.astro";
+import Main from "../layouts/main.astro";
+import ReviewsCarousel from "../sections/reviews-carousel.astro";
+import Review1 from "../assets/reviews/1.webp";
+import Review2 from "../assets/reviews/2.webp";
+import Review3 from "../assets/reviews/3.webp";
+import Review4 from "../assets/reviews/4.webp";
+import Review5 from "../assets/reviews/5.webp";
+import Review6 from "../assets/reviews/6.webp";
+import Review7 from "../assets/reviews/7.webp";
+import Review8 from "../assets/reviews/8.webp";
+import Practice from "../assets/benefits/practice.webp";
+import BenefitsCarousel from "../sections/benefits-carousel.astro";
+import Coaching from "../assets/benefits/coaching.webp";
+import Weather from "../assets/benefits/weather.webp";
+import Build from "../assets/benefits/build.webp";
+import Courses from "../assets/benefits/courses.webp";
+import BenefitsGrid from "../sections/usp-grid.astro";
+import Comparison from "../sections/comparison.astro";
+import ShedBefore from "../assets/shed-before.webp";
+import ShedAfter from "../assets/shed-after.webp";
 
+const reviews = [
+  {
+    title: "Really Happy With The Set Up!",
+    image: Review1,
+    description:
+      "Really happy with the set up. The price was sharp making it feasible as garage particle area. The sim is able to comfortability take all shots with the set up preventing and sideway or driver shots hitting the wall behind.  ",
+  },
+  {
+    title: "Best Purchase I've Made!",
+    image: Review7,
+    description:
+      "Fast shipping, easily assembled on my own. Best purchase I’ve made it’s so damn good ! Love it !",
+  },
+  {
+    title: "Makes Practice So Much Easier!",
+    image: Review2,
+    description:
+      "Love the Sky Trak Golf Simulator, makes practice so much easier with having a driving range in the garage away from all the elements and being able to have a quick hit.",
+  },
+  {
+    title: "Super Stoked With The Setup!",
+    image: Review3,
+    description:
+      "Been hitting balls none stop since I got it! Highly recommend 24/7 golf to anyone thinking about setting up a simulator these guys are great to deal with and you won’t be disappointed. ",
+  },
+  {
+    title: "Excellent Service!",
+    image: Review4,
+    description:
+      "Excellent service from 24/7 golf, top quality enclosure. TGC 2019 was so easy to install, is great to play. Highly recommended!",
+  },
+  {
+    title: "Everyone Was Very Helpful!",
+    image: Review5,
+    description: "Everyone was very helpful, polite and easy to work with",
+  },
+  {
+    title: "Such A Great Overall Package!",
+    image: Review6,
+    description:
+      "This is a really good overall package for a home or business setup,  it will certainly make a difference to my group on rainy days that are just no fun playing in.  This indoor experience will be great",
+  },
+  {
+    title: "System Is Great!",
+    image: Review8,
+    description:
+      "System is great. Easy to open and the after sales support is also fantastic. ",
+  },
+];
+
+const benefits = [
+  {
+    title: "Enhanced Practice & Game Improvement",
+    description:
+      "Our golf simulators employ cutting-edge technology, complete with trusted launch monitors and accurate data tracking, ensuring your skills improve with every swing.",
+    image: Practice,
+  },
+  {
+    title: "Play the World’s Best Courses",
+    description:
+      "Experience a diverse range of courses and games. Our simulators offer a variety of virtual golfing experiences, bringing the world's best courses right to your doorstep.",
+    image: Courses,
+  },
+  {
+    title: "Professional Coaching At Home",
+    description:
+      "Elevate your game with advanced analytics and video analysis features. Ideal for personal coaching, our simulators also offer precise club fitting, ensuring your equipment is as ready as you are.",
+    image: Coaching,
+  },
+  {
+    title: "Golf in Any Weather",
+    description:
+      "With our simulators, enjoy the freedom to play and practice golf regardless of the weather outside, perfect for year-round enthusiasts seeking uninterrupted play.",
+    image: Weather,
+  },
+  {
+    title: "Tailored to Your Space",
+    description:
+      "We specialize in custom installations, adapting seamlessly to your home, office, or commercial space, designed to suit your personal style and spatial requirements.",
+    image: Build,
+  },
+];
+
+const uspGrid = [
+  {
+    name: "Advanced Technology",
+    description:
+      "Features Impact Vision and Shot Vision cameras for detailed game analysis.",
+    icon: "bolt",
+  },
+  {
+    name: "Precision Tracking",
+    description:
+      "Utilizes Rapsodo's Precision Technology for accurate performance metrics.",
+    icon: "clock",
+  },
+  {
+    name: "Versatile Enclosure Options",
+    description:
+      "Offers three size options, suitable for various space requirements.",
+    icon: "versatile",
+  },
+  {
+    name: "Comprehensive Bundle",
+    description:
+      "Includes essential accessories like hitting mat, projector, and HDMI cable.",
+    icon: "bundle",
+  },
+  {
+    name: "Wide Course Access",
+    description:
+      "Provides over 30,000 course simulations with a one-year MLM 2 PRO membership.",
+    icon: "flag",
+  },
+  {
+    name: "Indoor and Outdoor Flexibility",
+    description: "Designed for both indoor and outdoor training sessions.",
+    icon: "sun",
+  },
+];
+
+const usps = [
+  "📦 Free Shipping",
+  "🚚 Next Day Dispatch",
+  "⚡ Buy Now, Pay Later",
+  "📦 Free Shipping",
+  "🚚 Next Day Dispatch",
+  "⚡ Buy Now, Pay Later",
+  "📦 Free Shipping",
+  "🚚 Next Day Dispatch",
+  "⚡ Buy Now, Pay Later",
+  "📦 Free Shipping",
+  "🚚 Next Day Dispatch",
+  "⚡ Buy Now, Pay Later",
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Main>
+  <ScrollingBanner messages={usps} />
+  <Navbar client:load />
+  <Product />
+  <VideoSection />
+  <ReviewsCarousel reviews={reviews} />
+  <BenefitsCarousel benefits={benefits} />
+  <BenefitsGrid usps={uspGrid} />
+  <Comparison
+    imageBefore={ShedBefore}
+    imageAfter={ShedAfter}
+    title="See What Our Customers Have Built"
+  />
+</Main>

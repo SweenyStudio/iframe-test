@@ -1,0 +1,19 @@
+---
+import Container from "../components/container.astro";
+import GolfVideo from "../assets/golf-clip.mp4";
+import Header from "../components/header.astro";
+---
+
+<section class="relative py-8 lg:py-16">
+  <Container>
+    <div class="flex justify-center items-center flex-col">
+      <Header title="Experience The Latest Golf Technology" />
+      <video
+        class="w-full h-auto rounded-xl max-w-6xl mt-8"
+        src={GolfVideo}
+        muted
+        autoplay
+        loop></video>
+    </div>
+  </Container>
+</section>

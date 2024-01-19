@@ -1,0 +1,100 @@
+---
+interface Props {
+  sizing: {
+    name: string;
+    dimensions: string;
+  }[];
+}
+
+const {sizing} = Astro.props;
+---
+
+<form class="mt-5">
+  <p class="text-xl font-black text-neutral-900">Size</p>
+  <div>
+    <div class="grid mt-5 w-full lg:grid-cols-2 gap-3">
+      {
+        sizing.map((size, index) => (
+          <button
+            id={`size-button-${index}`}
+            type="button"
+            class="w-full rounded-xl py-2 lg:py-3 text-lg font-bold text-neutral-900 duration-200 ring-0 bg-neutral-50 border border-neutral-300 hover:ring-1 hover:ring-neutral-400"
+          >
+            {size.name}
+            <br />
+            <span class="text-sm text-neutral-600">{size.dimensions}</span>
+          </button>
+        ))
+      }
+    </div>
+  </div>
+  <div class="mt-6 flex flex-col items-center">
+    <button
+      type="submit"
+      class="w-full items-center justify-center rounded-full border border-transparent bg-neutral-950 px-8 py-4 text-base font-bold text-white hover:bg-neutral-800 focus:outline-none"
+    >
+      ADD TO CART
+    </button>
+    <p class="text-sm underline mt-2">
+      {" "}
+      Free Shipping | Finance Options Available
+    </p>
+  </div>
+</form>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    let selectedSizeIndex = 0; // Default to first size option
+
+    const sizeButtons = document.querySelectorAll("[id^='size-button-']");
+    const selectSize = (index: number) => {
+      // Update selected size index
+      selectedSizeIndex = index;
+
+      // Update button styles
+      sizeButtons.forEach((button, idx) => {
+        if (idx === selectedSizeIndex) {
+          button.classList.add(
+            "ring-4",
+            "ring-lime-500",
+            "bg-gradient-to-tr",
+            "from-lime-100",
+            "to-green-100"
+          );
+          button.classList.remove(
+            "ring-0",
+            "bg-neutral-50",
+            "border",
+            "border-neutral-300",
+            "hover:ring-1",
+            "hover:ring-neutral-400"
+          );
+        } else {
+          button.classList.remove(
+            "ring-4",
+            "ring-lime-500",
+            "bg-gradient-to-tr",
+            "from-lime-100",
+            "to-green-100"
+          );
+          button.classList.add(
+            "ring-0",
+            "bg-neutral-50",
+            "border",
+            "border-neutral-300",
+            "hover:ring-1",
+            "hover:ring-neutral-400"
+          );
+        }
+      });
+    };
+
+    // Add event listeners to size buttons
+    sizeButtons.forEach((button, index) => {
+      button.addEventListener("click", () => selectSize(index));
+    });
+
+    // Initialize with the first size selected
+    selectSize(0);
+  });
+</script>

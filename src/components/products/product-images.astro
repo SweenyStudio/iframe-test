@@ -1,0 +1,83 @@
+---
+import {Image} from "astro:assets";
+
+interface Props {
+  images: {
+    id: number;
+    src: ImageMetadata;
+    name: string;
+    alt: string;
+  }[];
+}
+const {images} = Astro.props;
+---
+
+<div class="flex lg:sticky lg:top-[6rem] flex-col-reverse col-span-3">
+  {/* Image selector */}
+  <div class="mx-auto mt-6 w-full block max-w-none">
+    <div class="grid grid-cols-3 md:grid-cols-6 gap-2 overflow-x-clip px-2">
+      {
+        images.map((image, index) => (
+          <button
+            class="tab-button relative flex h-24 w-auto cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-neutral-900 hover:bg-neutral-50 focus:outline-none focus:ring focus:ring-lime-500 focus:ring-opacity-50 focus:ring-offset-1"
+            data-index={index}
+          >
+            <span class="sr-only">{image.name}</span>
+            <span class="absolute inset-0 overflow-hidden rounded-md">
+              <Image
+                src={image.src}
+                alt={image.alt}
+                class="h-full w-full object-cover object-center"
+              />
+            </span>
+          </button>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="aspect-h-1 aspect-w-1 w-full">
+    {
+      images.map((image, index) => (
+        <div class={`tab-panel ${index === 0 ? "block" : "hidden"}`}>
+          <Image
+            src={image.src}
+            alt={image.alt}
+            class="h-[24rem] lg:h-[40rem] w-full object-cover object-center rounded-lg"
+          />
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.querySelectorAll(".tab-button");
+    const panels = document.querySelectorAll(".tab-panel");
+
+    // Initially hide all panels except the first one
+    panels.forEach((panel, idx) => {
+      if (panel instanceof HTMLElement) {
+        panel.style.display = idx === 0 ? "block" : "none";
+      }
+    });
+
+    buttons.forEach((button, index) => {
+      button.addEventListener("click", () => {
+        // Hide all panels
+        panels.forEach((panel) => {
+          if (panel instanceof HTMLElement) {
+            panel.style.display = "none";
+          }
+        });
+
+        // Show the selected panel
+        const selectedPanel = panels[index];
+        if (selectedPanel instanceof HTMLElement) {
+          selectedPanel.style.display = "block";
+        }
+      });
+    });
+  });
+</script>

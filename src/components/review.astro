@@ -1,0 +1,29 @@
+---
+import StarIcon from "@heroicons/react/24/solid/StarIcon";
+import {Image} from "astro:assets";
+const {image, title, description} = Astro.props;
+---
+
+<div class="flex flex-col w-80 lg:w-96 snap-center flex-shrink-0">
+  <Image
+    src={image}
+    alt={title}
+    class="h-52 lg:h-72 w-full object-none object-center rounded-3xl"
+  />
+  <div class="flex items-center mt-4">
+    {
+      [0, 1, 2, 3, 4].map(() => (
+        <StarIcon
+          className="text-yellow-500 h-5 w-5 flex-shrink-0"
+          aria-hidden="true"
+        />
+      ))
+    }
+  </div>
+  <h3 class="mt-2 text-neutral-900 text-xl font-bold">
+    {title}
+  </h3>
+  <p class="text-neutral-500 tracking-wide text-base mt-2">
+    {description}
+  </p>
+</div>

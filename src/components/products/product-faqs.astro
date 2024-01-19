@@ -1,0 +1,76 @@
+---
+import {MinusIcon, PlusIcon} from "@heroicons/react/24/solid";
+
+interface Props {
+  details: {
+    name: string;
+    answer: string;
+  }[];
+}
+const {details} = Astro.props;
+---
+
+<section aria-labelledby="details-heading" class="mt-12">
+  <h3 id="details-heading" class="sr-only">Additional details</h3>
+
+  <div class="divide-y divide-neutral-300 border-t">
+    {
+      details.map((detail, index) => (
+        <div class="faq-section">
+          <button class="faq-toggle group relative flex w-full items-center justify-between py-4 text-left">
+            <span class="text-lg font-bold text-neutral-900">
+              {detail.name}
+            </span>
+            <span class="ml-6 flex items-center">
+              <MinusIcon
+                className="hidden faq-plus-icon h-6 w-6 text-neutral-800 group-hover:text-neutral-900"
+                aria-hidden="true"
+              />
+
+              <PlusIcon
+                className="block faq-minus-icon h-6 w-6 text-neutral-800 group-hover:text-neutral-900"
+                aria-hidden="true"
+              />
+            </span>
+          </button>
+
+          <div class="faq-content hidden prose prose-sm pb-6 text-[16px] text-neutral-700 font-medium leading-tight tracking-tight">
+            <p set:html={detail.answer} />
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const faqSections = document.querySelectorAll(".faq-section");
+
+    faqSections.forEach((section) => {
+      const toggle = section.querySelector(".faq-toggle");
+      const content = section.querySelector(".faq-content");
+      const plusIcon = section.querySelector(".faq-plus-icon");
+      const minusIcon = section.querySelector(".faq-minus-icon");
+
+      toggle?.addEventListener("click", () => {
+        const isOpen = content?.classList.contains("hidden");
+
+        // Toggle content visibility
+        if (content) {
+          content.classList.toggle("hidden", !isOpen);
+          const contentElement = content as HTMLElement;
+          contentElement.style.maxHeight = isOpen
+            ? contentElement.scrollHeight + "px"
+            : "0";
+        }
+
+        // Toggle icons
+        if (plusIcon && minusIcon) {
+          plusIcon.classList.toggle("hidden", !isOpen);
+          minusIcon.classList.toggle("hidden", isOpen);
+        }
+      });
+    });
+  });
+</script>

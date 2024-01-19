@@ -1,0 +1,58 @@
+---
+import {SEO} from "astro-seo";
+import Simulator from "../../public/skytrak-practice-package.webp";
+---
+
+<html lang="en" class="scroll-smooth">
+  <head>
+    <SEO
+      title="24-7 Golf"
+      description="24-7 Golf - The Ultimate Golf Simulation Technology"
+      openGraph={{
+        basic: {
+          title: "24-7 Golf - The Ultimate Golf Simulation Technology",
+          type: "website",
+          image: Simulator.src,
+        },
+      }}
+      extend={{
+        // extending the default link tags
+        link: [{rel: "icon", href: "/favicon.ico"}],
+        // extending the default meta tags
+        meta: [
+          {
+            name: "24-7 ",
+            content: "24-7 Golf - The Ultimate Golf Simulation Technology",
+          },
+        ],
+      }}
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;0,6..12,1000;1,6..12,200;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800;1,6..12,900;1,6..12,1000&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style is:global>
+      /* Improve Page speed */
+      /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
+      img {
+        content-visibility: auto;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      /* For IE, Edge and Firefox */
+      .scrollbar-hide {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+    </style>
+  </head>
+  <body class="relative bg-gray-50">
+    <slot />
+  </body>
+</html>
