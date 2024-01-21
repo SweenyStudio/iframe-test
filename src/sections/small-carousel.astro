@@ -4,6 +4,16 @@ import Review from "../components/review.astro";
 import Header from "../components/header.astro";
 import Container from "../components/container.astro";
 
+interface Props {
+  title: string;
+  reviews: {
+    image: ImageMetadata;
+    title: string;
+    description: string;
+  }[];
+  stars?: boolean;
+}
+
 const {title, reviews} = Astro.props;
 ---
 
@@ -15,7 +25,16 @@ const {title, reviews} = Astro.props;
     class="scrollbar-hide scroll-container pl-4 sm:pl-6 md:pl-12 lg:pl-32 flex flex-nowrap flex-shrink-0 overflow-x-scroll relative snap-mandatory snap-x"
   >
     <div class="flex flex-row py-8 gap-x-6">
-      {reviews.map((review: ImageMetadata) => <Review {...review} />)}
+      {
+        reviews.map(
+          (review: {
+            image: ImageMetadata;
+            title: string;
+            description: string;
+            stars?: boolean;
+          }) => <Review {...review} />
+        )
+      }
     </div>
   </div>
   <Container>
