@@ -4,12 +4,12 @@ import Review from "../components/review.astro";
 import Header from "../components/header.astro";
 import Container from "../components/container.astro";
 
-const {reviews} = Astro.props;
+const {title, reviews} = Astro.props;
 ---
 
 <section class="relative py-8 lg:py-20">
   <Container>
-    <Header title="Featured Reviews" />
+    <Header title={title} />
   </Container>
   <div
     class="scrollbar-hide scroll-container pl-4 sm:pl-6 md:pl-12 lg:pl-32 flex flex-nowrap flex-shrink-0 overflow-x-scroll relative snap-mandatory snap-x"

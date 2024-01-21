@@ -2,36 +2,44 @@
 import Usp from "../components/usp.astro";
 import Container from "../components/container.astro";
 import Header from "../components/header.astro";
+import type {StringLiteral} from "typescript";
 
 interface Props {
   usps: {
     name: string;
     description: string;
-    icon: string;
+    icon?: string;
   }[];
+  title?: string;
   bgColor?: string;
-  textColor?: string;
+  textTitleColor?: string;
+  textBodyColor?: string;
 }
 
 const {
+  title,
   usps,
   bgColor = "bg-neutral-800",
-  textColor = "text-neutral-100",
+  textTitleColor = "text-neutral-100",
+  textBodyColor = "text-neutral-300",
 } = Astro.props;
 ---
 
 <section class:list={["w-full py-16", bgColor]}>
   <Container>
-    <Header
-      title="The 24/7 Golf Difference"
-      className={`text-start ${textColor}`}
-    />
+    <Header title={title} className={`text-start ${textTitleColor}`} />
     <div
-      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-6 grid-rows-6 sm:grid-rows-3 lg:grid-rows-2 gap-y-8 gap-x-8"
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-6 gap-y-12 gap-x-8"
     >
       {
-        usps.map((usp: {name: string; description: string; icon: string}) => (
-          <Usp {...usp} />
+        usps.map((usp) => (
+          <Usp
+            icon={usp.icon}
+            name={usp.name}
+            description={usp.description}
+            textTitleColor={textTitleColor}
+            textBodyColor={textBodyColor}
+          />
         ))
       }
     </div>
