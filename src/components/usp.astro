@@ -2,19 +2,21 @@
 import {Icon} from "astro-icon/components";
 
 interface Props {
-  icon: string;
+  icon?: string;
   name: string;
   description: string;
+  textTitleColor: string;
+  textBodyColor: string;
 }
-const {icon, name, description} = Astro.props;
+const {icon, name, description, textTitleColor, textBodyColor} = Astro.props;
 ---
 
 <div class="flex flex-col w-full col-span-1">
-  <Icon name={icon} class="w-10 h-auto text-neutral-300" />
-  <h3 class="mt-2 text-neutral-100 text-xl font-bold">
+  {icon && <Icon name={icon} class:list={["w-10 h-auto ", textBodyColor]} />}
+  <h3 class:list={["mt-2 text-2xl font-bold", textTitleColor]}>
     {name}
   </h3>
-  <p class="text-neutral-400 tracking-tight text-base mt-1">
+  <p class:list={[" tracking-tight text-base mt-6", textBodyColor]}>
     {description}
   </p>
 </div>

@@ -4,7 +4,7 @@ import Navbar from "../sections/navbar";
 import VideoSection from "../sections/video.astro";
 import ScrollingBanner from "../sections/scrolling-banner.astro";
 import Main from "../layouts/main.astro";
-import ReviewsCarousel from "../sections/reviews-carousel.astro";
+import ReviewsCarousel from "../sections/small-carousel.astro";
 import Review1 from "../assets/reviews/1.webp";
 import Review2 from "../assets/reviews/2.webp";
 import Review3 from "../assets/reviews/3.webp";
@@ -19,10 +19,11 @@ import Coaching from "../assets/benefits/coaching.webp";
 import Weather from "../assets/benefits/weather.webp";
 import Build from "../assets/benefits/build.webp";
 import Courses from "../assets/benefits/courses.webp";
-import BenefitsGrid from "../sections/usp-grid.astro";
+import UspGrid from "../sections/usp-grid.astro";
 import Comparison from "../sections/comparison.astro";
 import ShedBefore from "../assets/shed-before.webp";
 import ShedAfter from "../assets/shed-after.webp";
+import SmallCarousel from "../sections/small-carousel.astro";
 
 const reviews = [
   {
@@ -145,6 +146,24 @@ const uspGrid = [
   },
 ];
 
+const uspGrid2 = [
+  {
+    name: "Finance from $45/mo",
+    description:
+      "Flexible financing options starting at just $45/month or opt for 0% APR for 12 months through Bread Pay at checkout.",
+  },
+  {
+    name: "Free Delivery",
+    description:
+      "Free Curbside Delivery with Optional In-Home Delivery Upgrade*. Crew places your item and removes packing.",
+  },
+  {
+    name: "12 month warranty included",
+    description:
+      "Every purchase includes a 12 month warranty, with the option to extend by an additional 3 or 5 years.",
+  },
+];
+
 const usps = [
   "📦 Free Shipping",
   "🚚 Next Day Dispatch",
@@ -166,12 +185,18 @@ const usps = [
   <Navbar client:load />
   <Product />
   <VideoSection />
-  <ReviewsCarousel reviews={reviews} />
+  <SmallCarousel title="Featured Reviews" reviews={reviews} />
   <BenefitsCarousel benefits={benefits} />
-  <BenefitsGrid usps={uspGrid} />
+  <UspGrid usps={uspGrid} title="The 24/7 Golf Difference" />
   <Comparison
     imageBefore={ShedBefore}
     imageAfter={ShedAfter}
     title="See What Our Customers Have Built"
+  />
+  <UspGrid
+    usps={uspGrid2}
+    bgColor="bg-neutral-200"
+    textTitleColor="text-neutral-950"
+    textBodyColor="text-neutral-500"
   />
 </Main>
