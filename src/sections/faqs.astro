@@ -10,7 +10,7 @@ const {faqs} = Astro.props;
     <Header title="Frequently Asked Questions" className="text-start" />
     <dl class="mt-10 space-y-8 divide-y divide-neutral-900/10">
       {
-        faqs.map((faq) => (
+        faqs.map((faq: {question: string; answer: string}) => (
           <div class="pt-8 lg:grid lg:grid-cols-12 lg:gap-8">
             <dt class="text-lg font-semibold text-neutral-900 lg:col-span-5">
               {faq.question}
