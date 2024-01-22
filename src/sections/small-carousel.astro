@@ -22,53 +22,54 @@ const {title, slides} = Astro.props;
     <Header title={title} />
   </Container>
   <div
-    class="scrollbar-hide scroll-container pl-4 sm:pl-6 md:pl-12 lg:pl-32 flex flex-nowrap flex-shrink-0 overflow-x-scroll relative snap-mandatory snap-x"
+    class="scroll-container scrollbar-hide pl-4 sm:pl-6 md:pl-12 lg:pl-32 flex flex-nowrap flex-shrink-0 overflow-x-scroll relative snap-mandatory snap-x"
+    data-scroll-container
   >
     <div class="flex flex-row py-8 gap-x-6">
-      {
-        slides.map(
-          (review: {
-            image: ImageMetadata;
-            title: string;
-            description: string;
-            stars?: boolean;
-          }) => <Review {...review} />
-        )
-      }
+      {slides.map((review) => <Review {...review} />)}
     </div>
   </div>
   <Container>
-    <div class="progress-bar bg-neutral-300 h-1.5 w-full rounded-full">
+    <div
+      class="progress-bar bg-neutral-300 h-1.5 w-full rounded-full"
+      data-progress-container
+    >
       <div
         class="progress bg-gradient-to-r from-lime-300 to-lime-600 h-1.5 w-0 rounded-full"
+        data-progress-bar
       >
       </div>
     </div>
   </Container>
 </section>
 
-<script>
-  const scrollContainer = document.querySelector(
-    ".scroll-container"
-  ) as HTMLElement;
-  const progressBar = document.querySelector(".progress") as HTMLElement;
+<script type="module">
+  document.addEventListener("DOMContentLoaded", () => {
+    // Select all scroll containers
+    const scrollContainers = document.querySelectorAll(
+      "[data-scroll-container]"
+    );
 
-  function updateProgressBar() {
-    if (!scrollContainer) {
-      console.error("Scroll container not found");
-      return;
-    }
+    scrollContainers.forEach((scrollContainer) => {
+      // For each scroll container, find its corresponding progress bar
+      const progressBar = scrollContainer.nextElementSibling.querySelector(
+        "[data-progress-bar]"
+      );
 
-    const scrollWidth =
-      scrollContainer.scrollWidth - scrollContainer.clientWidth;
-    const scrollLeft = scrollContainer.scrollLeft;
-    const scrollPercent = (scrollLeft / scrollWidth) * 100;
-    progressBar.style.width = scrollPercent + "%";
-  }
+      if (!progressBar) {
+        console.error("Progress bar not found for a scroll container");
+        return;
+      }
 
-  if (scrollContainer) {
-    scrollContainer.addEventListener("scroll", updateProgressBar);
-  } else {
-    console.error("Scroll container not found");
-  }
+      const updateProgressBar = () => {
+        const scrollWidth =
+          scrollContainer.scrollWidth - scrollContainer.clientWidth;
+        const scrollLeft = scrollContainer.scrollLeft;
+        const scrollPercent = (scrollLeft / scrollWidth) * 100;
+        progressBar.style.width = `${scrollPercent}%`;
+      };
+
+      scrollContainer.addEventListener("scroll", updateProgressBar);
+    });
+  });
 </script>
