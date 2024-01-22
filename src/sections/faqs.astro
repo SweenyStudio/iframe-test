@@ -1,0 +1,26 @@
+---
+import Container from "../components/container.astro";
+import Header from "../components/header.astro";
+
+const {faqs} = Astro.props;
+---
+
+<section class="bg-neutral-100 py-8 lg:py-20">
+  <Container class="divide-y divide-neutral-900/10">
+    <Header title="Frequently Asked Questions" className="text-start" />
+    <dl class="mt-10 space-y-8 divide-y divide-neutral-900/10">
+      {
+        faqs.map((faq) => (
+          <div class="pt-8 lg:grid lg:grid-cols-12 lg:gap-8">
+            <dt class="text-lg font-semibold text-neutral-900 lg:col-span-5">
+              {faq.question}
+            </dt>
+            <dd class="mt-4 lg:col-span-7 lg:mt-0">
+              <p class="text-base leading-7 text-neutral-500">{faq.answer}</p>
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </Container>
+</section>
