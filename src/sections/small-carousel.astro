@@ -6,7 +6,7 @@ import Container from "../components/container.astro";
 
 interface Props {
   title: string;
-  reviews: {
+  slides: {
     image: ImageMetadata;
     title: string;
     description: string;
@@ -14,7 +14,7 @@ interface Props {
   stars?: boolean;
 }
 
-const {title, reviews} = Astro.props;
+const {title, slides} = Astro.props;
 ---
 
 <section class="relative py-8 lg:py-20">
@@ -26,7 +26,7 @@ const {title, reviews} = Astro.props;
   >
     <div class="flex flex-row py-8 gap-x-6">
       {
-        reviews.map(
+        slides.map(
           (review: {
             image: ImageMetadata;
             title: string;
