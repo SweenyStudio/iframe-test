@@ -8,6 +8,10 @@ import {Dialog, Popover, Tab, Transition} from "@headlessui/react";
 import {Fragment, useState} from "react";
 
 import Logo from "../assets/logo.webp";
+import Net1 from "../assets/nets/1.webp";
+import Net2 from "../assets/nets/2.webp";
+import Net3 from "../assets/nets/3.webp";
+import Net4 from "../assets/nets/4.webp";
 import Sim1 from "../assets/simulators/mlm2-pro.webp";
 import Sim2 from "../assets/simulators/skytrak.webp";
 import Sim3 from "../assets/simulators/skytrack-prac.webp";
@@ -45,42 +49,31 @@ const navigation = {
       name: "Golf Return Nets",
       featured: [
         {
-          name: "New Arrivals",
-          href: "#",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-01.jpg",
-          imageAlt:
-            "Hats and sweaters on wood shelves next to various colors of t-shirts on hangers.",
+          name: "24/7 Golf Return Net Bundle",
+          href: "https://24-7.golf/products/24-7-golf-return-net-bundle",
+          imageSrc: Net1.src,
         },
         {
-          name: "Basic Tees",
-          href: "#",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-02.jpg",
-          imageAlt: "Model wearing light heather neutral t-shirt.",
+          name: "Golf Return Simulator Kit",
+          href: "https://24-7.golf/products/golf-return-simulator-kit",
+          imageSrc: Net2.src,
         },
         {
-          name: "Accessories",
-          href: "#",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-03.jpg",
-          imageAlt:
-            "Grey 6-panel baseball hat with black brim, black mountain graphic on front, and light heather neutral body.",
+          name: "Rapsodo MLM2 Pro Golf Return Net Bundle (Outdoor)",
+          href: "https://24-7.golf/products/rapsodo-mlm2-pro-golf-return-net-bundle-outdoor",
+          imageSrc: Net3.src,
         },
         {
-          name: "Carry",
-          href: "#",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-04.jpg",
-          imageAlt:
-            "Model putting folded cash into slim card holder olive leather wallet with hand stitching.",
+          name: "Rapsodo MLM2 Pro Golf Return Net Simulator Bundle",
+          href: "https://24-7.golf/products/rapsodo-mlm2-pro-golf-return-net-simulator-bundle",
+          imageSrc: Net4.src,
         },
       ],
     },
   ],
   pages: [
-    {name: "Accessories", href: "/accessories"},
-    {name: "Software", href: "/software"},
+    {name: "Accessories", href: "https://24-7.golf/collections/accessories"},
+    {name: "Software", href: "https://24-7.golf/collections/software"},
   ],
 };
 
