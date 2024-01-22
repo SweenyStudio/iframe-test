@@ -24,6 +24,13 @@ import Comparison from "../sections/comparison.astro";
 import ShedBefore from "../assets/shed-before.webp";
 import ShedAfter from "../assets/shed-after.webp";
 import SmallCarousel from "../sections/small-carousel.astro";
+import IncludedBracket from "../assets/included/bracket.webp";
+import IncludedCable from "../assets/included/hdmi-cable.webp";
+import IncludedHittingMat from "../assets/included/hitting-mat.webp";
+import IncludedLaunchMonitor from "../assets/included/launch-monitor.webp";
+import IncludedMetalCase from "../assets/included/metal-case.webp";
+import IncludedProjector from "../assets/included/projector.webp";
+import IncludedEnclosure from "../assets/included/simulator-enclosure.webp";
 
 const reviews = [
   {
@@ -72,6 +79,51 @@ const reviews = [
     image: Review8,
     description:
       "System is great. Easy to open and the after sales support is also fantastic. ",
+  },
+];
+
+const included = [
+  {
+    title: "Skytrak Golf Simulator Launch Monitor",
+    image: IncludedLaunchMonitor,
+    description:
+      "SkyTrak is a personal launch monitor that delivers instant and real-time 3D shot analysis and ball-flight data. Plus, enhance your SkyTrak experience with a high-definition simulation package.",
+  },
+  {
+    title: "Skytrak Metal Protective Case",
+    image: IncludedMetalCase,
+    description:
+      "The SkyTrak Protective Metal Case is the perfect way to protect your SkyTrak if you are constantly on the move. The metal case is extremely durable and has a built in kickstand to help with the viewing angle.",
+  },
+  {
+    title: "Skytrak Golf Simulator Enclosure",
+    image: IncludedEnclosure,
+    description:
+      "The SkyTrak Golf Simulator Enclosure is the perfect solution for those wanting to take their SkyTrak to different locations. The enclosure is easy to assemble and is made from high quality materials.",
+  },
+  {
+    title: "Skytrak Golf Simulator Projector",
+    image: IncludedProjector,
+    description:
+      "The SkyTrak Golf Simulator Projector is the perfect addition to your SkyTrak setup. The projector is a short throw projector that is designed to work with your SkyTrak Launch Monitor.",
+  },
+  {
+    title: "Skytrak Golf Simulator Hitting Mat",
+    image: IncludedHittingMat,
+    description:
+      "The SkyTrak Golf Simulator Hitting Mat is the perfect addition to your SkyTrak setup. The hitting mat is designed to work with your SkyTrak Launch Monitor and protect your floor from any mishits.",
+  },
+  {
+    title: "Skytrak Golf Simulator HDMI Cable",
+    image: IncludedCable,
+    description:
+      "The SkyTrak Golf Simulator HDMI Cable is the perfect addition to your SkyTrak setup. The HDMI cable is designed to work with your SkyTrak Launch Monitor and connect to your projector.",
+  },
+  {
+    title: "Skytrak Golf Simulator Mounting Bracket",
+    image: IncludedBracket,
+    description:
+      "The SkyTrak Golf Simulator Mounting Bracket is the perfect addition to your SkyTrak setup. The mounting bracket is designed to work with your SkyTrak Launch Monitor and connect to your projector.",
   },
 ];
 
@@ -185,7 +237,7 @@ const usps = [
   <Navbar client:load />
   <Product />
   <VideoSection />
-  <SmallCarousel stars title="Featured Reviews" reviews={reviews} />
+  <SmallCarousel stars title="Featured Reviews" slides={reviews} />
   <BenefitsCarousel benefits={benefits} />
   <UspGrid usps={uspGrid} title="The 24/7 Golf Difference" />
   <Comparison
@@ -199,4 +251,5 @@ const usps = [
     textTitleColor="text-neutral-950"
     textBodyColor="text-neutral-500"
   />
+  <SmallCarousel title="What's Included" slides={included} />
 </Main>
