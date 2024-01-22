@@ -4,7 +4,6 @@ import Navbar from "../sections/navbar";
 import VideoSection from "../sections/video.astro";
 import ScrollingBanner from "../sections/scrolling-banner.astro";
 import Main from "../layouts/main.astro";
-import ReviewsCarousel from "../sections/small-carousel.astro";
 import Review1 from "../assets/reviews/1.webp";
 import Review2 from "../assets/reviews/2.webp";
 import Review3 from "../assets/reviews/3.webp";
@@ -31,6 +30,8 @@ import IncludedLaunchMonitor from "../assets/included/launch-monitor.webp";
 import IncludedMetalCase from "../assets/included/metal-case.webp";
 import IncludedProjector from "../assets/included/projector.webp";
 import IncludedEnclosure from "../assets/included/simulator-enclosure.webp";
+import Cta from "../sections/cta.astro";
+import Faqs from "../sections/faqs.astro";
 
 const reviews = [
   {
@@ -230,6 +231,59 @@ const usps = [
   "🚚 Next Day Dispatch",
   "⚡ Buy Now, Pay Later",
 ];
+
+const faqs = [
+  {
+    id: 1,
+    question: "What is included in the SkyTrak Practice Package?",
+    answer:
+      "The package includes a SkyTrak Launch Monitor, Game Improvement Package, Protective Metal Case, USB Cable, Charger, Quick Start Guide, and a 1-Year Warranty.",
+  },
+  {
+    id: 2,
+    question: "What is the lead time for the SkyTrak Practice Package?",
+    answer:
+      "Lead time is generally 2-3 weeks, with all orders shipped from our warehouse in Melbourne, Australia.",
+  },
+  {
+    id: 3,
+    question:
+      "How does in-home delivery work for the SkyTrak Practice Package?",
+    answer:
+      "After ordering, you'll receive an SMS and email to set up a delivery time. For the lower 48, the delivery crew will place the package at ground level of your location, unpack it, and remove all packing materials. International deliveries include the package and pallet.",
+  },
+  {
+    id: 4,
+    question: "Is financing available for the SkyTrak Practice Package?",
+    answer:
+      "Yes, we offer 12, 24, 36, or 48-month financing through Bread Pay, including a 0% APR option for 12 months.",
+  },
+  {
+    id: 5,
+    question: "Do you ship internationally?",
+    answer:
+      "International shipping is available to Australia, UAE, Puerto Rico, and US Territories. Note: 220V regions require a converter.",
+  },
+  {
+    id: 6,
+    question: "What technology does the SkyTrak Practice Package employ?",
+    answer:
+      "It features advanced photometric technology for accurate shot analysis and includes various virtual golfing experiences.",
+  },
+  {
+    id: 7,
+    question:
+      "Can I use the SkyTrak Practice Package for professional coaching?",
+    answer:
+      "Yes, the simulator offers advanced analytics and video analysis features ideal for personal coaching and precise club fitting.",
+  },
+  {
+    id: 8,
+    question: "What are the size options for the SkyTrak Practice Package?",
+    answer:
+      "The package comes in three sizes: Par 3 (3m W x 2.6m H x 1.6m D), Par 4 (3.6m W x 2.6m H x 1.6m D), and Par 5 (4m W x 3m H x 3m D or 1.6m D for shallow option).",
+  },
+];
 ---
 
 <Main>
@@ -252,4 +306,6 @@ const usps = [
     textBodyColor="text-neutral-500"
   />
   <SmallCarousel title="What's Included" slides={included} />
+  <Cta />
+  <Faqs faqs={faqs} />
 </Main>

@@ -1,0 +1,23 @@
+---
+import Container from "../components/container.astro";
+import Header from "../components/header.astro";
+---
+
+<div class="bg-neutral-800 py-8 lg:py-20">
+  <Container>
+    <div class="text-center">
+      <Header
+        title="Get $200 Off Your First Order!"
+        className="text-neutral-100"
+      />
+      <div class="mt-10 flex items-center justify-center gap-x-6">
+        <a
+          href="#"
+          class="rounded-full w-full lg:w-max bg-neutral-100 px-12 py-3 text-lg font-semibold text-neutral-800 shadow-sm border-4 border-neutral-100 hover:border-green-600 transition duration-200 hover:bg-neutral-200"
+        >
+          Get $200 Off!
+        </a>
+      </div>
+    </div>
+  </Container>
+</div>
