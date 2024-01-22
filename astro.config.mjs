@@ -8,5 +8,7 @@ import vercel from "@astrojs/vercel/serverless";
 export default defineConfig({
   integrations: [react(), tailwind(), icon()],
   output: "server",
-  adapter: vercel(),
+  adapter: vercel({
+    imageService: true,
+  }),
 });
