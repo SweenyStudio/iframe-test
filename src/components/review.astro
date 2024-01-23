@@ -5,7 +5,13 @@ const {image, title, description, stars} = Astro.props;
 ---
 
 <div class="flex flex-col w-80 lg:w-96 snap-center flex-shrink-0">
-  <Image src={image} alt={title} class="h-52 lg:h-72 w-full rounded-3xl" />
+  <Image
+    src={image}
+    alt={title}
+    class="h-52 lg:h-72 w-full rounded-3xl"
+    width={image.width / 4}
+    height={image.height / 4}
+  />
   <div class="flex items-center mt-4">
     {
       stars &&
