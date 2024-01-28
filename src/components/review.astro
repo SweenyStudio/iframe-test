@@ -9,8 +9,8 @@ const {image, title, description, stars} = Astro.props;
     src={image}
     alt={title}
     class="h-52 lg:h-72 w-full rounded-3xl"
-    width={image.width / 4}
-    height={image.height / 4}
+    max-width={600}
+    max-height={600}
   />
   <div class="flex items-center mt-4">
     {
