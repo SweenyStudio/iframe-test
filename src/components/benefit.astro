@@ -8,8 +8,8 @@ const {image, title, description} = Astro.props;
     src={image}
     alt={title}
     class="h-52 lg:h-[30rem] w-full object-cover object-center rounded-3xl"
-    max-width={600}
-    max-height={600}
+    width={image.width / 8}
+    height={image.height / 8}
   />
   <div class="flex lg:flex-row flex-col justify-between mt-6">
     <h3 class="text-neutral-900 text-xl lg:text-2xl font-bold lg:w-1/3">

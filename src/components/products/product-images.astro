@@ -28,8 +28,8 @@ const {images} = Astro.props;
                 src={image.src}
                 alt={image.alt}
                 class="h-full w-full object-cover object-center"
-                max-width={800}
-                max-height={800}
+                width={image.src.width / 8}
+                height={image.src.height / 8}
                 loading={"eager"}
               />
             </span>
@@ -47,8 +47,8 @@ const {images} = Astro.props;
             src={image.src}
             alt={image.alt}
             class="h-[24rem] lg:h-[40rem] w-full object-cover object-center rounded-lg"
-            max-width={800}
-            max-height={800}
+            width={image.src.width / 8}
+            height={image.src.height / 8}
           />
         </div>
       ))
