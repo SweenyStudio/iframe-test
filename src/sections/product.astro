@@ -11,7 +11,7 @@ import ProductsReviews from "../components/products/product-reviews.astro";
 import ProductName from "../components/products/product-name.astro";
 import ProductDescription from "../components/products/product-description.astro";
 import ProductPrice from "../components/products/product-price.astro";
-import ProductOptions from "../components/products/product-options.astro";
+import ProductOptions from "../components/products/product-options";
 import ProductFaqs from "../components/products/product-faqs.astro";
 
 const product = {
@@ -90,13 +90,13 @@ const product = {
         `,
     },
     {
-    name: "Do you offer free shipping?",
-    answer: `
+      name: "Do you offer free shipping?",
+      answer: `
     <p>
     Yes, curbside delivery is absolutely free on our SkyTrack Practice Package.
     <br />
     </p>
-    `
+    `,
     },
     {
       name: "What is lead time?",
@@ -136,10 +136,11 @@ const product = {
       <ProductDescription description={product.description} />
 
       {/* Sizing */}
-      <ProductOptions sizing={product.sizing} />
+      <ProductOptions sizing={product.sizing} client:load />
 
       {/* Details */}
       <ProductFaqs details={product.details} />
     </div>
   </section>
 </Container>
+../components/products/product-options.tsx

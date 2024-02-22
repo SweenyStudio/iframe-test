@@ -148,7 +148,7 @@ export default function Navbar() {
                       >
                         <div className="grid grid-cols-2 gap-x-4 gap-y-10">
                           {category.featured.map((item) => (
-                            <div key={item.name} className="group relative">
+                            <a key={item.name} className="group relative" href={item.href}>
                               <div className="h-2/3 w-auto overflow-hidden rounded-md bg-neutral-100 group-hover:opacity-75">
                                 <img
                                   src={item.imageSrc}
@@ -157,8 +157,8 @@ export default function Navbar() {
                                   loading="lazy"
                                 />
                               </div>
-                              <a
-                                href={item.href}
+                              <div
+                                
                                 className="mt-6 block text-sm font-medium text-neutral-900"
                               >
                                 <span
@@ -166,14 +166,14 @@ export default function Navbar() {
                                   aria-hidden="true"
                                 />
                                 {item.name}
-                              </a>
+                              </div>
                               <p
                                 aria-hidden="true"
                                 className="mt-1 text-sm text-neutral-500"
                               >
                                 Shop now
                               </p>
-                            </div>
+                            </a>
                           ))}
                         </div>
                       </Tab.Panel>
@@ -345,7 +345,7 @@ export default function Navbar() {
                       {/* Cart */}
                       <div className="ml-4 flow-root lg:ml-8">
                         <a
-                          href="/cart"
+                          href="https://24-7.golf/cart"
                           className="group -m-2 flex items-center p-2"
                         >
                           <span className="sr-only">Cart</span>
