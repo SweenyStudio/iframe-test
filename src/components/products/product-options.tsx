@@ -25,6 +25,7 @@ export default function ProductOptions({
         sizing.map((size, index) => (
           <a
             
+            key={index}
             id={size.variantId}
             className={`flex flex-col items-center w-full rounded-xl py-2 lg:py-3 text-lg cursor-pointer font-bold text-neutral-900 duration-200 ring-0 bg-neutral-100 border border-neutral-300  ${selectedVariant.variantId === size.variantId ? 'ring-lime-500 ring-2 bg-gradient-to-tr from-lime-100 to-green-100' : ' hover:ring-1 hover:ring-neutral-400'}`}
             onClick={() => setSelectedVariant({ variantId: size.variantId })}
